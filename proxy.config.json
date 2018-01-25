@@ -1,0 +1,9 @@
+{
+  "/proxy1/*": {
+    "target": "http://api.openweathermap.org/",
+    "pathRewrite" : {"^/proxy1":""},
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

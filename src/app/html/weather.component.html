@@ -1,0 +1,4 @@
+<app-d3graph *ngIf="showChartFlag" id="weatherChart" [plotData] = "resultObj"></app-d3graph>
+<section class="errorSec" *ngIf="!showChartFlag">
+    {{errorMessage|uppercase}}
+</section>

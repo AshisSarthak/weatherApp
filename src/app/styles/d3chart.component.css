@@ -1,0 +1,22 @@
+svg{
+    padding: 30px;
+    margin: 20px;
+}
+
+.line {
+    fill: none;
+    stroke: #EF5285;
+    stroke-width: 2px;
+  }
+
+  .dot {
+    stroke: none;
+}
+.tooltip {
+    position: absolute;
+    background: #D9D9D9;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    color: blue
+}

@@ -1,0 +1,8 @@
+.errorSec{
+    height: 100%;
+    padding: 30px;
+    font-size: 30px;
+    text-align: center;
+    color: lightgrey;
+    letter-spacing: 3px;
+}

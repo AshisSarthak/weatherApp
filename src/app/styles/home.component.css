@@ -1,0 +1,45 @@
+.weatherHeader{
+    height: 40px;
+    color: white;
+    background-color: #3A8FE8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+.searchbarSection{
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-transition: 300ms linear;
+    transition: 300ms linear;
+}
+
+.initialHeight{
+    height:300px;
+}
+
+  .full-width {
+    width: 100%;
+  }
+
+  .searchBar{
+    margin-top: 10px;
+    width: 300px;
+    -webkit-transition: 300ms linear;
+    transition: 300ms linear;
+    margin-right: 20px;
+  }
+
+  .searchCity{
+    background-image: url('../images/search.svg');
+    background-repeat: no-repeat;
+    background-size: 64%;
+    background-position: 50%;
+    background-color: white;
+  }
+  .errorMessageClass{
+      color: red;
+      font-size: 12px;
+  }

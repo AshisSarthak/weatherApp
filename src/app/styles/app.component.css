@@ -1,0 +1,22 @@
+
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.weatherHeader{
+    height: 40px;
+    background: white;
+    color: #3A8FE8;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 24px;
+    border-bottom: 1px solid #3A8FE8;
+    margin-bottom: 20px;
+}
+.wrapperBody{
+    height: calc(100vh - 40px);
+}

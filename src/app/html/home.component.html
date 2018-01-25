@@ -1,0 +1,14 @@
+<section class="searchbarSection initialHeight" [ngClass]="{
+    'initialHeight':isCitySearched === false
+    }">
+    <div class="searchBar">
+        <mat-input-container class="full-width">
+            <input matInput placeholder="Enter City Name" id="cityName" (keyup)="searchForWeather($event)"  [(ngModel)]="cityName" required/>
+        </mat-input-container>
+        <mat-error class="errorMessageClass">
+            <strong>{{errorMessage}}</strong>
+        </mat-error>
+    </div>
+    <button class="searchCity" mat-mini-fab (click)="getWeatherForCity()" disabled={{disableSubmit}}></button>
+</section>
+<router-outlet></router-outlet>

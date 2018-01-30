@@ -19,4 +19,6 @@
 }
 .wrapperBody{
     height: calc(100vh - 40px);
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    font-weight: 100;
 }

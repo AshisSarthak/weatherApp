@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 
+import {WeatherService} from "../services/weatherservice.service";
 
 @Component({
   selector: "home",
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 
 export class HomeComponent {
 
-  constructor(public router: Router) {
+  constructor(public router: Router,private weatherSerice: WeatherService) {
 
   }
 
@@ -22,7 +23,6 @@ export class HomeComponent {
 
   private searchForWeather(event: Event) {
     let cityNameRegex = /^[a-zA-Z]*$/;
-    
     if(!cityNameRegex.test(this.cityName)){
         this.errorMessage = "City name can only contain alphabets";
         this.disableSubmit = true;
@@ -35,7 +35,9 @@ export class HomeComponent {
   private getWeatherForCity(){
     if(this.cityName.trim().length === 0){
        this.errorMessage = "Enter a valid city name to search";
+       this.weatherSerice.setIsCitySearched(false);
     } else {
+        this.weatherSerice.setIsCitySearched(true);
         this.isCitySearched = true;
         this.errorMessage = "";
         this.router.navigate(['home/' , this.cityName]);

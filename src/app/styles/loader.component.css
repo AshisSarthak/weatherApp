@@ -1,0 +1,40 @@
+
+.loader-wrapper{
+    position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(210,210,210,0.7);
+  z-index: 1000;
+  overflow-y: hidden;
+  
+  }
+  .loader-section{
+    height: 100px;
+    width: 250px;
+    border-radius: 5px;
+    margin: 0 auto;
+    top: calc((100% - 250px)/2);
+    position: relative;
+  }
+  .cp-loader{
+    height: 30px !important;
+    width: 30px !important;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+  .cp-loader svg{
+    height:30px !important;
+  }
+  .loader-text{
+    margin-left: 15px;
+    display: inline-block;
+    color: #0B6CB3;
+    font-size: 20px;
+        font-weight: 100;
+  }
+  
+  .innerLoader{
+    width:  calc( 100%) !important;
+  }
+  

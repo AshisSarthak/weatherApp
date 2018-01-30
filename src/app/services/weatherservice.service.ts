@@ -12,6 +12,8 @@ export class WeatherService {
 
   constructor (private http: HttpClient, private serviceUrls: ServiceUrls) {}
 
+  private isCitySearched : boolean;
+
   getWeatherData(targetCity:any):  Observable<any> {
     return this.http.get(this.serviceUrls.callWeatherUrl + targetCity + this.serviceUrls.API_KEY)
                     .map(this.extractData)
@@ -34,6 +36,14 @@ export class WeatherService {
                       .catch(this.handleError);
     }
 
+  }
+
+  public getIsCitySearched(){
+    return this.isCitySearched;
+  }
+
+  public setIsCitySearched(citySearchedFlag:boolean){
+    return this.isCitySearched = citySearchedFlag;
   }
 
 

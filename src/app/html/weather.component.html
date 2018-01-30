@@ -1,4 +1,13 @@
-<app-d3graph *ngIf="showChartFlag" id="weatherChart" [plotData] = "resultObj"></app-d3graph>
-<section class="errorSec" *ngIf="!showChartFlag">
-    {{errorMessage|uppercase}}
+<section class="searchResultContainer">
+    <app-d3graph *ngIf="showChartFlag" id="weatherChart" [plotData] = "resultObj" (showToolTipE)="showToolTipFn($event)"></app-d3graph>
+    <section [ngClass]="showToolTipSectionClass">
+        <section  class="detailedSections" *ngFor="let obj of selectedObj">
+            <div class="headerKey"><div class="text"> {{obj.header}} </div></div>
+            <div class="selectedValue" [ngClass]="getProperColor(obj.header,showToolTipObj[obj.headerKey])"> {{showToolTipObj[obj.headerKey+""]}} </div>
+        </section>
+    </section>
+    <section class="errorSec" *ngIf="!showChartFlag">
+        {{errorMessage|uppercase}}
+    </section>
 </section>
+<loader isInnerLoader="true"  *ngIf="showLoader"></loader>

@@ -5,4 +5,98 @@
     text-align: center;
     color: lightgrey;
     letter-spacing: 3px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 15%;
+}
+.detailedSectionWrapper{
+    position: absolute;
+    top: 40px;
+    right: 0px;
+    border-left: 1px solid #ccc;
+    box-shadow: 1px 2px 3px 2px #ccc;
+    height: calc(100% - 67px);
+    -webkit-transition: 0.5s linear all;
+}
+.hideToolTipSection{
+    right: -500px;
+    padding: 0px;
+}
+.openToolTipSection{
+    right: 0px;
+    padding: 10px;
+}
+.detailedSections{
+    height: calc(100% / 6);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-top: 1px solid #ccc;
+}
+.detailedSections:first-child{
+    border-top: none;
+}
+.detailedSections .headerKey{
+    color: #666;
+    text-transform: uppercase;
+    font-size: 20px;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    width: 130px;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+.detailedSections .selectedValue{
+    font-size: 42px;
+}
+.cold{
+    color: #878BC6;
+}
+.hot{
+    color: #F27935;
+}
+.normal{
+    color: #78D7F5;
+}
+
+.detailedSections .headerKey{
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: 12% 25%;
+}
+.detailedSections:nth-child(1) .headerKey{
+    background-image: url('../images/thermometer.svg');
+}
+.detailedSections:nth-child(2) .headerKey{
+    background-image: url('../images/sunny.svg');
+}
+.detailedSections:nth-child(3) .headerKey{
+    background-image: url('../images/moon.svg');
+}
+.detailedSections:nth-child(4) .headerKey{
+    background-image: url('../images/pressure.svg');
+}
+.detailedSections:nth-child(5) .headerKey{
+    background-image: url('../images/drop.svg');
+}
+.detailedSections:nth-child(6) .headerKey{
+    background-image: url('../images/wind.svg');
+}
+.searchResultContainer{
+    display: flex;
+    height: calc(100% - 120px);
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    padding-left: 50px;
 }

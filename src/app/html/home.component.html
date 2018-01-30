@@ -1,6 +1,6 @@
 <section class="searchbarSection initialHeight" [ngClass]="{
     'initialHeight':isCitySearched === false
-    }">
+    }" >
     <div class="searchBar">
         <mat-input-container class="full-width">
             <input matInput placeholder="Enter City Name" id="cityName" (keyup)="searchForWeather($event)"  [(ngModel)]="cityName" required/>

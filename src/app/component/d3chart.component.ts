@@ -67,7 +67,7 @@ export class D3graphComponent implements OnInit {
                 this.animateThePlot();
                 setTimeout(()=>{
                     this.addScatterPlot();
-                },2050);
+                },1050);
         }
     }
     public plotSvgFirst(): void {
@@ -163,7 +163,7 @@ export class D3graphComponent implements OnInit {
         .attr("stroke-dasharray", totalLength + " " + totalLength)
         .attr("stroke-dashoffset", totalLength)
         .transition()
-          .duration(2000)
+          .duration(1000)
           .ease(this.d3.easeBackInOut)
           .attr("stroke-dashoffset", 0);
     }

@@ -14,7 +14,7 @@ import { D3Service } from 'd3-ng2-service';
 
 
 import {HomeComponent} from '../component/home.component';
-import {ChartComponent} from '../component/chart.component';
+import {ChartComponent} from '../component/weather.component';
 import {D3graphComponent} from '../component/d3chart.component';
 import {LoaderComponent} from '../component/loader.component';
 import {ServiceUrls} from '../constants/serviceurl.constant';

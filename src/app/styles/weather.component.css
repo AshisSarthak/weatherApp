@@ -17,14 +17,14 @@
     border-left: 1px solid #ccc;
     box-shadow: 1px 2px 3px 2px #ccc;
     height: calc(100% - 67px);
-    -webkit-transition: 0.5s linear all;
+    -webkit-transition: 0.2s ease-in-out all;
 }
 .hideToolTipSection{
-    right: -500px;
+    opacity: 0;
     padding: 0px;
 }
 .openToolTipSection{
-    right: 0px;
+    opacity: 1;
     padding: 10px;
 }
 .detailedSections{
@@ -57,7 +57,8 @@
     justify-content: flex-start;
 }
 .detailedSections .selectedValue{
-    font-size: 42px;
+    font-size: 36px;
+    font-weight: 100;
 }
 .cold{
     color: #878BC6;
@@ -66,7 +67,7 @@
     color: #F27935;
 }
 .normal{
-    color: #78D7F5;
+    color: #3A8FE8;
 }
 
 .detailedSections .headerKey{

@@ -11,7 +11,7 @@
   }
   .loader-section{
     height: 100px;
-    width: 250px;
+    width: 190px;
     border-radius: 5px;
     margin: 0 auto;
     top: calc((100% - 250px)/2);

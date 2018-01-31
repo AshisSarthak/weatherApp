@@ -21,7 +21,7 @@ export class HomeComponent {
   private errorMessage: string ;
   private disableSubmit :boolean = true;
 
-  private searchForWeather(event: Event) {
+  private searchForWeather(event: any) {
     let cityNameRegex = /^[a-zA-Z]*$/;
     if(!cityNameRegex.test(this.cityName)){
         this.errorMessage = "City name can only contain alphabets";
@@ -29,6 +29,9 @@ export class HomeComponent {
     } else {
         this.errorMessage = "";
         this.disableSubmit = false;
+    }
+    if(event.keyCode === 13){
+      this.getWeatherForCity();
     }
   }
 

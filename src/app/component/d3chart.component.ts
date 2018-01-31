@@ -15,7 +15,7 @@ import {
 
 @Component({
   selector: 'app-d3graph',
-  template: '',
+  templateUrl: '../html/d3chart.component.html',
   styleUrls : ['../styles/d3chart.component.css']
 })
 
@@ -34,7 +34,7 @@ export class D3graphComponent implements OnInit {
     private svg: any;
     private margin: any = {top: 20, right: 50, bottom: 30, left: 50};
     private width : any = 960 - this.margin.left - this.margin.right;
-    private height: any = 500 - this.margin.top - this.margin.bottom;
+    private height: any = 450 - this.margin.top - this.margin.bottom;
     private xScale: any;
     private yScale: any;
     private valueline : any ;
@@ -71,7 +71,7 @@ export class D3graphComponent implements OnInit {
         }
     }
     public plotSvgFirst(): void {
-        this.svg = this.d3.select(this.parentNativeElement)
+        this.svg = this.d3.select(".weatherChart")
         .append('svg')        // create an <svg> element
         .attr("width", this.width + this.margin.left + this.margin.right)
         .attr("height", this.height + this.margin.top + this.margin.bottom)
@@ -116,7 +116,7 @@ export class D3graphComponent implements OnInit {
         .data([this.data])
         .attr("class", "line")
         .attr('class', 'guide')
-        .attr("style"," fill: none;stroke: #4eaef4;stroke-width: 2px;")
+        .attr("style"," fill: none;stroke: #4eaef4;stroke-width: 1px;")
         .attr("d", this.valueline);
     }
 
@@ -169,21 +169,23 @@ export class D3graphComponent implements OnInit {
     }
 
     public addScatterPlot(){
-            // Add the scatterplot
+            let self = this;
             let dots = this.svg.selectAll(".dot")
             .data(this.data)
             .enter().append("circle")
             .attr("class","dot")
-            .attr("r", 5)
+            .attr("r", 3)
             .attr("style","fill:#095b96;cursor:pointer;")
             .attr("transform","translate(" + this.margin.left + ",0)")
             .attr("cx", (d: any) => this.xScale(d.dt_txt))
             .attr("cy", (d: any) => this.yScale(d.main.temp))
-            .on("mouseover", (d: any) => {
-                this.mouseOverFn(d)
+            .on("mouseover",function(d){
+                self.mouseOverFn(d);
+                self.d3.select(this).attr("r","7");
             })
-            .on("mouseout", (d: any) => {
-                this.mouseOutFn(d);
+            .on("mouseout",function(d){
+                self.mouseOutFn(d);
+                self.d3.select(this).attr("r","2");
             });
 
             this.d3.selectAll(".dot").transition()
@@ -197,7 +199,7 @@ export class D3graphComponent implements OnInit {
     }
 
     public showToolTip(flag:boolean,data:any){
-        this.showToolTipE.emit(this.populateThrowObject(flag,data)); //emmiting the event.
+        this.showToolTipE.emit(this.populateThrowObject(flag,data));
     }
 
     public mouseOutFn(d:any){

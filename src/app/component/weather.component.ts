@@ -92,7 +92,7 @@ export class ChartComponent implements OnInit {
       if(objKey.toLowerCase().indexOf("temp")>-1){
         if(objVal < "273"){
           retClass = "cold";
-        } else if(objVal > 310){
+        } else if(objVal > "310"){
           retClass = "hot";
         } else{
           retClass = "normal";

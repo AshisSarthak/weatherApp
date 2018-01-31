@@ -7,7 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import {HomeComponent} from '../component/home.component';
-import {ChartComponent} from '../component/chart.component';
+import {ChartComponent} from '../component/weather.component';
 
 // Define which component should be loaded based on the current URL
 export const routes: Routes = [

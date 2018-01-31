@@ -1,6 +1,6 @@
 // Import our dependencies
 import { NgModule } from '@angular/core';
-import {MatCardModule,
+import {
     MatButtonModule,
     MatIconModule,
     MatTabsModule,
@@ -12,11 +12,13 @@ import {MatCardModule,
     MatSelectModule,
     MatTableModule,
     MatTooltipModule,
-    MatProgressSpinnerModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatSidenavModule,
     MatDialogModule} from '@angular/material';
+import {MatCardModule} from '@angular/material/card';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 @NgModule({
   imports: [

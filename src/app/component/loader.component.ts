@@ -11,14 +11,11 @@ import {ViewEncapsulation} from '@angular/core';
 export class LoaderComponent implements OnInit{
   private color: any = 'primary';
   private mode: any = 'indeterminate';
-  private value: any = 50;
+  private value: any = 70;
   @Input() isInnerLoader;
   private innerLoaderFlag : boolean;
 
   ngOnInit(){
     this.innerLoaderFlag = this.isInnerLoader;
-  }
-  getInnerLoaderWidth(){
-    return (this.innerLoaderFlag ? "innerLoader" : "")
   }
 }

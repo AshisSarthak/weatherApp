@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import {GeneralConstants} from '../constants/general.constant';
 
 import {WeatherService} from "../services/weatherservice.service";
 
@@ -16,7 +17,7 @@ import {WeatherService} from "../services/weatherservice.service";
 
 export class ChartComponent implements OnInit {
     constructor( private route: ActivatedRoute,
-        private router: Router, private weatherService: WeatherService) {
+        private router: Router, private weatherService: WeatherService, private generatConstants: GeneralConstants) {
           this.weatherService = weatherService;
     }
     private showLoader:boolean;
@@ -24,33 +25,15 @@ export class ChartComponent implements OnInit {
     public errorMessage : string;
     public resultObj : any;
     public showChartFlag : boolean = false;
-    public demoSelectedObj : any = [{
-        "header" : "Temp.",
-        "headerKey" : "main.temp" 
-      },{
-        "header" : "Temp. Max",
-        "headerKey" : "main.temp_max" 
-      },{
-        "header" : "Temp. Min",
-        "headerKey" : "main.temp_min" 
-      },{
-        "header" : "Pressure",
-        "headerKey" : "main.pressure" 
-      },{
-        "header" : "Humidity",
-        "headerKey" : "main.humidity" 
-      },{
-      "header" : "Wind Speed",
-      "headerKey" : "wind.speed" 
-    }];
+    public demoSelectedObj : any = this.generatConstants.DEFAULTSEARCHOBJ;
     public selectedObj : any =[];
     private showToolTipComponent : boolean = false;
     private showToolTipObj : any;
-    private showToolTipSectionClass : string = "detailedSectionWrapper";
+    private showToolTipSectionClass : string = this.generatConstants.DEFAULTCLASSFOROVERLAY;
     ngOnInit() {
         this.route.params.subscribe(params => {
-            if (params['name']) { 
-              this.cityName=(params['name']);
+            if (params[this.generatConstants.KEY_NAME]) { 
+              this.cityName=(params[this.generatConstants.KEY_NAME]);
               if(this.weatherService.getIsCitySearched()){
                 this.getCityWeather();
               } else {
@@ -72,11 +55,11 @@ export class ChartComponent implements OnInit {
 
     private getCityWeather(){
         this.showLoader = true;
-        this.resultObj = "";
+        this.resultObj = this.generatConstants.BLANKSPACE;
         this.showChartFlag = false;
         this.weatherService.getWeatherData(this.cityName)
         .subscribe(
-           (result)=>{
+           (result) => {
             this.resultObj = result;
             this.showChartFlag = true;
             this.showLoader = false;
@@ -88,21 +71,21 @@ export class ChartComponent implements OnInit {
     }
 
     private getProperColor(objKey: string, objVal: string): string {
-      let retClass:string="";
-      if(objKey.toLowerCase().indexOf("temp")>-1){
-        if(objVal < "273"){
-          retClass = "cold";
-        } else if(objVal > "310"){
-          retClass = "hot";
+      let retClass: string = this.generatConstants.BLANKSPACE;
+      if(objKey.toLowerCase().indexOf(this.generatConstants.KEY_TEMP) > -1){
+        if(objVal < this.generatConstants.NUM_MINTEMP){
+          retClass = this.generatConstants.CLASS_COLD;
+        } else if(objVal > this.generatConstants.NUM_MAXTEMP){
+          retClass = this.generatConstants.CLASS_HOT;
         } else{
-          retClass = "normal";
+          retClass = this.generatConstants.CLASS_NORMAL;
         }
-      } else if(objKey.toLowerCase()==="pressure"){
-        retClass = "normal";
-      } else if(objKey.toLowerCase()==="humidity"){
-        retClass = "normal";
-      } else if(objKey.toLowerCase()==="wind speed"){
-        retClass = "normal";
+      } else if(objKey.toLowerCase() === this.generatConstants.KEY_PRESSURE){
+        retClass = this.generatConstants.CLASS_NORMAL;
+      } else if(objKey.toLowerCase() === this.generatConstants.KEY_HUMIDITY){
+        retClass = this.generatConstants.CLASS_NORMAL;
+      } else if(objKey.toLowerCase() === this.generatConstants.KEY_WINDSPEED){
+        retClass = this.generatConstants.CLASS_NORMAL;
       }
 
       return retClass;
@@ -110,20 +93,20 @@ export class ChartComponent implements OnInit {
 
     private showToolTipSection(){
       if(!this.showToolTipComponent){
-        if(this.showToolTipSectionClass.split(" ").includes('openToolTipSection')){
+        if(this.showToolTipSectionClass.split(this.generatConstants.WHITESPACE).includes(this.generatConstants.OPENOVERLAYCLASS)){
           this.showToolTipSectionClass = 
-            this.showToolTipSectionClass.replace('openToolTipSection','').trim();
+            this.showToolTipSectionClass.replace(this.generatConstants.OPENOVERLAYCLASS,this.generatConstants.BLANKSPACE).trim();
         }
-        if(!this.showToolTipSectionClass.split(" ").includes('hideToolTipSection')){
-          this.showToolTipSectionClass +=" hideToolTipSection";
+        if(!this.showToolTipSectionClass.split(this.generatConstants.WHITESPACE).includes(this.generatConstants.CLOSEOVERLAYCLASS)){
+          this.showToolTipSectionClass +=this.generatConstants.WHITESPACE + this.generatConstants.CLOSEOVERLAYCLASS;
         }
       } else {
-        if(this.showToolTipSectionClass.split(" ").includes('hideToolTipSection')){
+        if(this.showToolTipSectionClass.split(this.generatConstants.WHITESPACE).includes(this.generatConstants.CLOSEOVERLAYCLASS)){
           this.showToolTipSectionClass = 
-            this.showToolTipSectionClass.replace('hideToolTipSection','').trim();
+            this.showToolTipSectionClass.replace(this.generatConstants.CLOSEOVERLAYCLASS,this.generatConstants.BLANKSPACE).trim();
         }
-        if(!this.showToolTipSectionClass.split(" ").includes('openToolTipSection')){
-          this.showToolTipSectionClass +=" openToolTipSection";
+        if(!this.showToolTipSectionClass.split(this.generatConstants.WHITESPACE).includes(this.generatConstants.OPENOVERLAYCLASS)){
+          this.showToolTipSectionClass +=this.generatConstants.WHITESPACE + this.generatConstants.OPENOVERLAYCLASS;
         }
       }
     }

@@ -18,7 +18,7 @@ import {ChartComponent} from '../component/weather.component';
 import {D3graphComponent} from '../component/d3chart.component';
 import {LoaderComponent} from '../component/loader.component';
 import {ServiceUrls} from '../constants/serviceurl.constant';
-
+import {GeneralConstants} from '../constants/general.constant';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import {ServiceUrls} from '../constants/serviceurl.constant';
     AngMaterialModule,
     HttpClientModule
   ],
-  providers: [WeatherService,D3Service, ServiceUrls],
+  providers: [WeatherService, D3Service, ServiceUrls, GeneralConstants],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
